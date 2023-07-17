@@ -11,11 +11,15 @@ class Book extends Model
 {
     use HasFactory;
     // Testing Appends and Accessors
-    protected $appends = ['rating'];
+    protected $appends = ['rating_count', 'rating_avg'];
 
-    public function getRatingAttribute()
+    public function getRatingCountAttribute()
     {
         return $this->reviews()->count();
+    }
+    public function getRatingAvgAttribute()
+    {
+        return $this->reviews()->avg('rating');
     }
     // Testing Appends and Accessors
 

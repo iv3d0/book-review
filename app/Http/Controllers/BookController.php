@@ -27,9 +27,16 @@ class BookController extends Controller
             'highest_rated_last_6months' => $books->highestRatedLast6Months(),
             default => $books->latest(),
         };
-        $cacheKey = 'books_' . $filters . '_' . $bookTitle;
-        $books = cache()->remember($cacheKey, 4800, fn () => $books->get());
-        // $books = $books->get();
+        /**
+         * Disabled Cache For Now
+         */
+        // $cacheKey = 'books_' . $filters . '_' . $bookTitle;
+        // $books = cache()->remember($cacheKey, 4800, fn () => $books->get());
+        /**
+         * Disabled Cache For Now
+         */
+        // return $books->get();
+        $books = $books->paginate(5);
         return view('books.index', compact('books'));
     }
 

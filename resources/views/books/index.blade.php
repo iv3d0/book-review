@@ -44,10 +44,11 @@
                         </div>
                         <div>
                             <div class="book-rating">
-                                {{-- <x-star-rating :rating="$book->reviews_avg_rating" /> --}}
+                                <x-start-rating :rating="$book->rating_avg" />
+                                {{ round($book->rating_avg) }}
                             </div>
                             <div class="book-review-count">
-                                out of {{ $book->reviews_count }} {{ Str::plural('review', $book->reviews_count) }}
+                                out of {{ $book->rating_count }} {{ Str::plural('review', $book->rating_count) }}
                             </div>
                         </div>
                     </div>
@@ -63,3 +64,6 @@
         @endforelse
     </ul>
 @endsection
+<div class="pagination">
+    {{ $books->links() }}
+</div>
