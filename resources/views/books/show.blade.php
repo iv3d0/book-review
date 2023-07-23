@@ -4,7 +4,10 @@
     <div class="mb-4">
         {{-- @dd($latestReview) --}}
         <h1 class="mb-2 text-2xl">{{ $book->title }}</h1>
-
+        <div class="mb-4">
+            <a href="{{ route('books.reviews.create', $book) }}" class="reset-link">
+                Add a review!</a>
+        </div>
         <div class="book-info">
             <div class="book-author mb-4 text-lg font-semibold">by {{ $book->author }}</div>
             <div class="book-rating flex items-center">
